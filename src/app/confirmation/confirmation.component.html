@@ -1,0 +1,94 @@
+<form [formGroup]="myForm" (ngSubmit)="onClickSubmit()">
+  <mat-grid-list cols="2" rowHeight="4em"
+    >>
+    <mat-grid-tile colspan="2">
+      <h1 style="text-align: center; color: blue">Confirm Your Information</h1>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field>
+        <input
+          matInput
+          class="form-control"
+          [readonly]="true"
+          [ngClass]="{'testVal': myForm.controls['FirstName'].errors?.['required']&& myForm.controls['FirstName'].invalid  && myForm.controls['FirstName'].touched  }"
+          value=""
+          placeholder="First Name"
+          formControlName="FirstName"
+        />
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <input
+          matInput
+          class="form-control"
+          [readonly]="true"
+          [ngClass]="{'testVal': myForm.controls['LastName'].errors?.['required']&& myForm.controls['LastName'].invalid  && myForm.controls['LastName'].touched  }"
+          value=""
+          placeholder="Last Name"
+          formControlName="LastName"
+        />
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          [min]="minDate"
+          [max]="maxDate"
+          [matDatepicker]="picker"
+          [ngClass]="{'testVal': myForm.controls['DOB'].errors?.['required']&& myForm.controls['DOB'].invalid  && myForm.controls['DOB'].touched }"
+          value=""
+          placeholder="Date Of Birth"
+          formControlName="DOB"
+          (dateInput)="onDateSelected($event)"
+          [readonly]="true"
+        />
+        <mat-datepicker
+          #picker
+          (click)="stopEventPropagation($event)"
+        ></mat-datepicker>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <input
+          matInput
+          class="form-control"
+          [readonly]="true"
+          [ngClass]="{'testVal': myForm.controls['PostalCode'].errors?.['required']&& myForm.controls['PostalCode'].invalid  && myForm.controls['PostalCode'].touched  }"
+          value=""
+          placeholder="Postal Code"
+          formControlName="PostalCode"
+        />
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1">
+      <button
+        mat-raised-button
+        type="submit"
+        value="submit"
+        class="btn btn-primary"
+        (click)="onClickBackButton($event)"
+      >
+        Back
+      </button>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1">
+      <button
+        mat-raised-button
+        type="submit"
+        style="float: right"
+        value="submit"
+        class="btn btn-primary"
+        (click)="onClickSubmit()"
+        [disabled]="!myForm.valid"
+      >
+        Submit
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

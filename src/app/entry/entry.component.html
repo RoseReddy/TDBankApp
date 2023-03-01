@@ -1,0 +1,138 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmitForm($event)">
+  <mat-grid-list cols="2" rowHeight="4em"
+    >>
+    <mat-grid-tile colspan="2">
+      <h1 style="text-align: center; color: blue">Enter Your Information</h1>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field>
+        <input
+          matInput
+          class="form-control"
+          [ngClass]="{'testVal': myForm.controls['FirstName'].errors?.['required']&& myForm.controls['FirstName'].invalid  && myForm.controls['FirstName'].touched  }"
+          value=""
+          placeholder="First Name"
+          formControlName="FirstName"
+        />
+
+        <mat-error
+          *ngIf="
+            myForm.controls['FirstName'].invalid &&
+            myForm.controls['FirstName'].touched
+          "
+          class="alert"
+        >
+          <mat-error
+            *ngIf="myForm.controls['FirstName'].errors?.['required']"
+            style="color: red"
+            ><i class="bi bi-exclamation-triangle"></i> &nbsp;First Name cannot
+            be blank</mat-error
+          >
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <input
+          matInput
+          class="form-control"
+          [ngClass]="{'testVal': myForm.controls['LastName'].errors?.['required']&& myForm.controls['LastName'].invalid  && myForm.controls['LastName'].touched  }"
+          value=""
+          placeholder="Last Name"
+          formControlName="LastName"
+        />
+
+        <mat-error
+          *ngIf="
+            myForm.controls['LastName'].invalid &&
+            myForm.controls['LastName'].touched
+          "
+        >
+          <mat-error
+            *ngIf="myForm.controls['LastName'].errors?.['required']"
+            style="color: red"
+            ><i class="bi bi-exclamation-triangle"></i> &nbsp;Last Name cannot
+            be blank</mat-error
+          >
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <input
+          matInput
+          [min]="minDate"
+          [max]="maxDate"
+          [matDatepicker]="picker"
+          [ngClass]="{'testVal': myForm.controls['DOB'].errors?.['required']&& myForm.controls['DOB'].invalid  && myForm.controls['DOB'].touched }"
+          value=""
+          placeholder="Date Of Birth"
+          formControlName="DOB"
+          (dateInput)="onDateSelected($event)"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+        <mat-error
+          *ngIf="
+            myForm.controls['DOB'].invalid && myForm.controls['DOB'].touched
+          "
+        >
+          <mat-error
+            *ngIf="myForm.controls['DOB'].errors?.['required']"
+            style="color: red"
+            ><i class="bi bi-exclamation-triangle"></i> &nbsp;Date Of Birth
+            cannot be blank</mat-error
+          >
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field>
+        <input
+          matInput
+          class="form-control"
+          [ngClass]="{'testVal': myForm.controls['PostalCode'].errors?.['required']&& myForm.controls['PostalCode'].invalid  && myForm.controls['PostalCode'].touched  }"
+          value=""
+          placeholder="Postal Code"
+          formControlName="PostalCode"
+        />
+
+        <mat-error
+          *ngIf="
+            myForm.controls['PostalCode'].invalid &&
+            myForm.controls['PostalCode'].touched
+          "
+        >
+          <mat-error
+            *ngIf="myForm.controls['PostalCode'].errors?.['required']"
+            style="color: red"
+            ><i class="bi bi-exclamation-triangle"></i> &nbsp;Postal Code cannot
+            be blank</mat-error
+          >
+        </mat-error>
+        <mat-error *ngIf="myForm.invalid">
+          Please enter a valid Canadian postal code
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2">
+      <button
+        mat-raised-button
+        mat-color="#FFA500"
+        style="float: right"
+        value="submit"
+        [disabled]="!(myForm.valid || isSubmittedValue)"
+      >
+        Next
+      </button>
+
+      <!--           
+                <button type="submit" style="float: right;" value="submit" class="btn btn-primary"
+                        [disabled]="!(myForm.valid)&& isSubmittedValue">Next</button> -->
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
