@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .left, .right {
+    flex-basis: 25%;
+  }
+  
+  .middle {
+    flex: 1;
+    margin: 0 20px;
+  }
+  

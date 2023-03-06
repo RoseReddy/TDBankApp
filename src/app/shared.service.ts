@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { StoreValues } from './store-values';
 
 @Injectable({
@@ -7,6 +7,7 @@ import { StoreValues } from './store-values';
 })
 export class SharedService {
   formattedDate: string;
+  testVal =new Subject();
   objValues$ = new BehaviorSubject<any>(123);
   constructor() {}
 
@@ -19,6 +20,7 @@ export class SharedService {
 
   dateFormating($event: Date): string {
     const dateVal = $event;
+   
     const month = dateVal.getMonth(); // getMonth() returns a zero-based index
     const day = dateVal.getDate();
     const year = dateVal.getFullYear();
@@ -34,5 +36,11 @@ export class SharedService {
     const month = parseInt(dateParts[0], 10);
     const day = parseInt(dateParts[1], 10);
     return new Date(year, month, day);
+  }
+
+  search(val:string){
+    let test;
+    console.log("CC"+val)
+return this.testVal as Observable<any>;
   }
 }

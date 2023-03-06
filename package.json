@@ -1,6 +1,8 @@
 {
   "name": "error-free-app",
+ 
   "version": "0.0.0",
+ 
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +11,9 @@
     "test": "ng test",
     "prettier": "npx prettier --write ."
   },
+
   "private": true,
+  
   "dependencies": {
     "@angular/animations": "^14.0.0",
     "@angular/cdk": "^14.0.6",
@@ -41,4 +45,5 @@
     "prettier": "2.4.1",
     "eslint-config-prettier": "^8.4.0"
   }
+  
 }

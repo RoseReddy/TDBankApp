@@ -72,5 +72,7 @@ export class ConfirmationComponent implements OnInit {
     this.sharedService.setobjValues(this.information);
     this.router.navigate(['/']);
   }
-  onDateSelected(event: MatDatepickerInputEvent<Date>) {}
+  onDateSelected(event: MatDatepickerInputEvent<Date>) {
+    
+  }
 }
