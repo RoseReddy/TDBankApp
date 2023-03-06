@@ -82,7 +82,9 @@ export class EntryComponent implements OnInit {
       ]),
     });
   }
+
   onClickSubmit() {
+    let p=0;
     this.router.navigate(['/thankyou']);
   }
 
